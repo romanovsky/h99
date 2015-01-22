@@ -1,0 +1,11 @@
+name:              h99
+version:           1.0
+Build-Type:        Simple
+cabal-version:     >= 1.2
+
+executable         h99
+  main-is:         Main.hs
+  hs-source-dirs:  src
+  build-depends:   base, QuickCheck
+
+
