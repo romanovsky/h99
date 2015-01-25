@@ -8,14 +8,16 @@ where
 import Test.QuickCheck
 
 
-p01_myLast :: (Eq a) => [a] -> a
+p01_myLast :: Eq a => [a] -> a
+p01_myLast [] = error "empty list"
 p01_myLast xs = xs!!(length xs - 1)
 
-test_p01_myLast :: [Int] -> Bool
-test_p01_myLast (x:[]) = p01_myLast([x]) == x
-test_p01_myLast (xs:x:[]) = p01_myLast(xs:x:[]) == x
+p01_myLast' :: [Int] -> Int
+p01_myLast' [] = error "empty list"
+p01_myLast' xs = foldr ( flip const)
 
-main :: IO()
-main = do
-    quickCheck test_p01_myLast
+test_p01_myLast :: ([Int]->Int) -> [Int] -> Bool
+test_p01_myLast f [] = True
+test_p01_myLast f xs = last xs == f xs
+
 
