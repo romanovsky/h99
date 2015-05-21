@@ -10,6 +10,12 @@ module P01_10_lists
     p02_myButLast,
     p02_myButLast',
     test_p02_myButLast,
+
+    p03_elementAt,
+    test_p03_elementAt,
+
+    p04_myLength,
+    test_p04_myLength,
     )
 where
 
