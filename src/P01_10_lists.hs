@@ -10,6 +10,19 @@ module P01_10_lists
     p02_myButLast,
     p02_myButLast',
     test_p02_myButLast,
+
+    p03_elementAt,
+    test_p03_elementAt,
+
+    p04_myLength,
+    test_p04_myLength,
+
+    myReverse,
+    myReverse',
+    test_myReverse,
+
+    isPalindrome,
+    test_isPalindrome
     )
 where
 
@@ -82,3 +95,26 @@ p04_myLength xs = foldr (\x acc -> acc+1) 0 xs
 
 test_p04_myLength :: ([a] -> Int) -> [a] -> Bool
 test_p04_myLength f xs = (f xs) == (length xs)
+
+
+---------- 05 ---------------
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse xs = foldl (\acc x -> x:acc) [] xs
+
+myReverse' :: [a] -> [a]
+myReverse' [] = []
+myReverse' xs = foldl ( flip (:) ) [] xs
+
+test_myReverse :: Eq a => ([a] -> [a]) -> [a] -> Bool
+test_myReverse f xs = (f xs) == (reverse xs)
+
+
+----------- 06 --------------------
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [_] = True
+isPalindrome xs = ( (head xs) == (last xs) ) && ( isPalindrome $ init $ tail xs)
+
+test_isPalindrome f xs = (f xs) == (xs == reverse xs)
