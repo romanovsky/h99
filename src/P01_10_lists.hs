@@ -14,6 +14,7 @@ module P01_10_lists
 where
 
 import Data.Eq
+import Test.QuickCheck (Testable)
 
 ---------- 01 ---------------
 
@@ -44,16 +45,16 @@ test_p01_myLast f (xs) = f(xs) == last xs
 
 ---------- 02 ---------------
 
-p02_myButLast :: [Int] -> Int
+p02_myButLast :: [a] -> a
 p02_myButLast [] = error "too few elements"
 p02_myButLast [x] = error "too few elements"
 p02_myButLast [x,_] = x
 p02_myButLast (_:xs) = p02_myButLast xs
 
-p02_myButLast' :: [Int] -> Int
+p02_myButLast' :: [a] -> a
 p02_myButLast' = last . init
 
-test_p02_myButLast :: ([Int]->Int) ->[Int] -> Bool
+test_p02_myButLast :: Eq a => ([a]->a) ->[a] -> Bool
 test_p02_myButLast f ([]) = True
 test_p02_myButLast f ([x]) = True
 test_p02_myButLast f (xs) = f(xs) == xs!!(length xs - 2)
