@@ -5,6 +5,7 @@ import Test.QuickCheck
 import Data.Eq
 --import TT (ttfun)
 import P01_10_lists
+import Data.Aeson.Encode.Pretty (encodePretty)
 
 main :: IO()
 main = do
@@ -36,4 +37,5 @@ main = do
 
 -}
 
-
+    let res = myCompress2 "aaaeeeebbcccaa"
+    print encodePretty [1,2,4]
