@@ -41,9 +41,7 @@ module P01_10_lists
 where
 
 import Data.Eq
-import qualified Data.Map.Strict as Map
 import Data.List (group)
-import Test.QuickCheck (Testable)
 
 
 ------------------------------ 01 ------------------------------
