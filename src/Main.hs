@@ -5,7 +5,9 @@ import Test.QuickCheck
 import Data.Eq
 --import TT (ttfun)
 import P01_10_lists
-import Data.Aeson.Encode.Pretty (encodePretty)
+--import Data.Aeson.Encode.Pretty (encodePretty)
+--import IO
+import qualified Text.Show.Pretty as Pr
 
 main :: IO()
 main = do
@@ -35,7 +37,13 @@ main = do
 --    print $ myCompress' testData
     quickCheck ( test_myCompress :: [Char] -> Bool )
 
+    let res = myEncode "aaaeeeebbcccaa"
+    putStrLn $ Pr.ppShow res
+    quickCheck $ (test_myEncode :: ([Int]->Bool))
 -}
 
-    let res = myCompress2 "aaaeeeebbcccaa"
-    print encodePretty [1,2,4]
+    let testData = "aaaaaoooorr"
+    let res = myPack testData
+    putStrLn $ Pr.ppShow res
+--    quickCheck $ ( test_myPack :: ([Char]->[[Char]]) -> [Char] -> Bool ) myPack
+

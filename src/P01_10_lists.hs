@@ -30,7 +30,12 @@ module P01_10_lists
     myCompress',
     test_myCompress,
 
-    myCompress2,
+    myPack,
+    test_myPack,
+
+    myEncode,
+    myEncode',
+    test_myEncode,
     )
 where
 
@@ -178,7 +183,7 @@ test_myCompress xs = res == res' where
 
 myPack :: Eq a => [a] -> [[a]]
 myPack [] = []
---myPack xs = foldl (\acc x -> if ((not $ null acc) && x == head . last acc) then acc else acc ++ [x]) [[]] xs
+myPack xs = foldl (\acc x -> if ((not $ null acc) && (not $ null $ last acc) && x == head (last acc)) then acc else acc ++ [[x]]) [[]] xs
 
 
 test_myPack :: Eq a => ([a] -> [[a]]) -> [a] -> Bool
@@ -186,7 +191,11 @@ test_myPack f xs = (f xs) == (group xs)
 
 ------------------------------ 10 ------------------------------
 
-data CompressTuple a = Int a
+myEncode :: Eq a => [a] -> [(Int, a)]
+myEncode xs = foldr (\x acc -> (length(x), head x):acc ) [] (group xs)
 
-myCompress2 :: Eq a => [a] -> [(Int, a)]
-myCompress2 xs = foldr (\x acc -> (length(x), head x):acc ) [] (group xs)
+myEncode' :: Eq a => [a] -> [(Int, a)]
+myEncode' = map ( \x -> (length x, head x)) . group
+
+test_myEncode :: Eq a => [a] -> Bool
+test_myEncode xs = (myEncode xs) == (myEncode' xs)
