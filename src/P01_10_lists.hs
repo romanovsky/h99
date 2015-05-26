@@ -31,6 +31,7 @@ module P01_10_lists
     test_myCompress,
 
     myPack,
+    myPack',
     test_myPack,
 
     myEncode,
@@ -183,8 +184,15 @@ test_myCompress xs = res == res' where
 
 myPack :: Eq a => [a] -> [[a]]
 myPack [] = []
-myPack xs = foldl (\acc x -> if ((not $ null acc) && (not $ null $ last acc) && x == head (last acc)) then acc else acc ++ [[x]]) [[]] xs
+--myPack xs = foldl (\acc x -> if ((not $ null acc) && (not $ null $ last acc) && x == head (last acc)) then acc else acc ++ [[x]]) [[]] xs
+myPack xs = foldr f [] xs
+    where
+        f x [] = [[x]]
+        f x (y:xs) = if x == head y then ((x:y):xs) else ([x]:y:xs)
 
+myPack' [] = []
+myPack' (x:xs) = (x:first) : myPack' rest
+    where (first, rest) = span (==x) xs
 
 test_myPack :: Eq a => ([a] -> [[a]]) -> [a] -> Bool
 test_myPack f xs = (f xs) == (group xs)

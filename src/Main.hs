@@ -37,13 +37,15 @@ main = do
 --    print $ myCompress' testData
     quickCheck ( test_myCompress :: [Char] -> Bool )
 
+    let testData = "aaaaaoooorr"
+    let res = myPack testData
+    putStrLn $ Pr.ppShow res
+    quickCheck $ ( test_myPack :: ([Char]->[[Char]]) -> [Char] -> Bool ) myPack
+    quickCheck $ ( test_myPack :: ([Char]->[[Char]]) -> [Char] -> Bool ) myPack'
+
     let res = myEncode "aaaeeeebbcccaa"
     putStrLn $ Pr.ppShow res
     quickCheck $ (test_myEncode :: ([Int]->Bool))
 -}
 
-    let testData = "aaaaaoooorr"
-    let res = myPack testData
-    putStrLn $ Pr.ppShow res
---    quickCheck $ ( test_myPack :: ([Char]->[[Char]]) -> [Char] -> Bool ) myPack
 
