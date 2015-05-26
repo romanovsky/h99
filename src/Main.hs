@@ -1,10 +1,10 @@
 module Main where
 
---import P01_10_lists (test1)
 import Test.QuickCheck
 import Data.Eq
 --import TT (ttfun)
 import P01_10_lists
+import P11_20_lists
 --import Data.Aeson.Encode.Pretty (encodePretty)
 --import IO
 import qualified Text.Show.Pretty as Pr
@@ -12,6 +12,7 @@ import qualified Text.Show.Pretty as Pr
 main :: IO()
 main = do
 {-
+------------------------------ 01..10 ------------------------------
     quickCheck $ ( test_p01_myLast :: ([Char]->Char) -> [Char] -> Bool) p01_myLast
     quickCheck $ ( test_p01_myLast :: ([Char]->Char) -> [Char] -> Bool) p01_myLast'
     quickCheck $ ( test_p01_myLast :: ([Char]->Char) -> [Char] -> Bool) p01_myLast''
@@ -48,4 +49,7 @@ main = do
     quickCheck $ (test_myEncode :: ([Int]->Bool))
 -}
 
-
+{-
+------------------------------ 11..20 ------------------------------
+-}
+    quickCheck $ ( test_myEncodeModified :: ([Char] -> [(Integer, Char)]) -> [Char] -> Bool ) myEncodeModified
