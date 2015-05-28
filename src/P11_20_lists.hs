@@ -10,6 +10,8 @@ module P11_20_lists
     encodeDirect,
     encodeDirect',
     test_encodeDirect,
+
+    test_myDuplicate,
     )
 where
 
@@ -70,3 +72,16 @@ encodeDirect' (x:xs) = (encodeItem (n,x)):(encodeDirect' rest)
 
 test_encodeDirect :: Eq a => [a] -> Bool
 test_encodeDirect xs = (encodeDirect xs)==(encodeDirect' xs)
+
+------------------------------ 14 ------------------------------
+myDuplicate :: [a] -> [a]
+myDuplicate = concatMap (\x -> [x,x])
+
+myDuplicate' :: [a] -> [a]
+myDuplicate' [] = []
+myDuplicate' (x:xs) = x:x:(myDuplicate' xs)
+
+test_myDuplicate :: Eq a => [a] -> Bool
+test_myDuplicate xs = (myDuplicate xs) == (myDuplicate' xs)
+
+

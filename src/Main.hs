@@ -58,7 +58,7 @@ main = do
 
     quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
     quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
-    
+
     let result = encodeDirect testData
     let result' = encodeDirect' testData
     putStrLn $ Pr.ppShow result
@@ -66,3 +66,5 @@ main = do
 
     quickCheck $ ( test_encodeDirect :: [Char] -> Bool )
 -}
+
+    quickCheck $ ( test_myDuplicate :: [Char] -> Bool )
