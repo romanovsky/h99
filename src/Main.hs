@@ -11,6 +11,7 @@ import qualified Text.Show.Pretty as Pr
 
 main :: IO()
 main = do
+    let testData = "qwersdafqdsfeee"
 {-
 ------------------------------ 01..10 ------------------------------
     quickCheck $ ( test_p01_myLast :: ([Char]->Char) -> [Char] -> Bool) p01_myLast
@@ -53,9 +54,15 @@ main = do
 ------------------------------ 11..20 ------------------------------
     quickCheck $ ( test_encodeModified :: [Char] -> Bool )
 
-    let testData = "qwersdafqdsfeee"
     putStrLn $ Pr.ppShow $ decodeModified(encodeModified testData)
 
+    quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
+    quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
+    
+    let result = encodeDirect testData
+    let result' = encodeDirect' testData
+    putStrLn $ Pr.ppShow result
+    putStrLn $ Pr.ppShow result'
+
+    quickCheck $ ( test_encodeDirect :: [Char] -> Bool )
 -}
-    quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
-    quickCheck $ ( test_decodeModified :: [Bool] -> Bool )

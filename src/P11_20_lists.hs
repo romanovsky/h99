@@ -3,8 +3,12 @@ module P11_20_lists
     EncodedListItem(..),
     encodeModified,
     test_encodeModified,
+
     decodeModified,
     test_decodeModified,
+
+    encodeDirect,
+    encodeDirect',
     test_encodeDirect,
     )
 where
@@ -57,5 +61,12 @@ encodeDirect1 n y [] = [encodeItem (n, y)]
 encodeDirect1 n y (x:xs) | x==y = encodeDirect1 (n+1) y xs
                          | otherwise = (encodeItem (n, y)):(encodeDirect1 1 x xs)
 
+encodeDirect' :: Eq a => [a] -> [EncodedListItem a]
+encodeDirect' [] = []
+encodeDirect' (x:xs) = (encodeItem (n,x)):(encodeDirect' rest)
+    where
+        (matched, rest) = span (==x) xs
+        n = 1 + length matched
+
 test_encodeDirect :: Eq a => [a] -> Bool
-test_encodeDirect xs = (encodeDirect xs)==(encodeModified xs)
+test_encodeDirect xs = (encodeDirect xs)==(encodeDirect' xs)
