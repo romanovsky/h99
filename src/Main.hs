@@ -51,5 +51,10 @@ main = do
 
 {-
 ------------------------------ 11..20 ------------------------------
+    quickCheck $ ( test_encodeModified :: [Char] -> Bool )
+
+    let testData = "qwersdafqdsfeee"
+    putStrLn $ Pr.ppShow $ decodeModified(encodeModified testData)
+    quickCheck $ ( test_decodeModified :: [Bool] -> Bool )
+
 -}
-    quickCheck $ ( test_myEncodeModified :: [Char] -> Bool )
