@@ -52,4 +52,4 @@ main = do
 {-
 ------------------------------ 11..20 ------------------------------
 -}
-    quickCheck $ ( test_myEncodeModified :: ([Char] -> [(Integer, Char)]) -> [Char] -> Bool ) myEncodeModified
+    quickCheck $ ( test_myEncodeModified :: [Char] -> Bool )
