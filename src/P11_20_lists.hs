@@ -12,6 +12,10 @@ module P11_20_lists
     test_encodeDirect,
 
     test_myDuplicate,
+
+    test_myReplicate,
+
+    dropEvery,
     )
 where
 
@@ -74,6 +78,8 @@ test_encodeDirect :: Eq a => [a] -> Bool
 test_encodeDirect xs = (encodeDirect xs)==(encodeDirect' xs)
 
 ------------------------------ 14 ------------------------------
+
+-- TODO: check applicative and list monad solutions
 myDuplicate :: [a] -> [a]
 myDuplicate = concatMap (\x -> [x,x])
 
@@ -85,3 +91,24 @@ test_myDuplicate :: Eq a => [a] -> Bool
 test_myDuplicate xs = (myDuplicate xs) == (myDuplicate' xs)
 
 
+------------------------------ 15 ------------------------------
+
+myReplicate :: [a] ->  Int -> [a]
+myReplicate xs n = concatMap (replicate n) xs
+
+test_myReplicate :: Eq a => [a] -> Bool
+test_myReplicate xs = ((myDuplicate . myDuplicate) xs) == (myReplicate xs 4)
+
+
+------------------------------ 16 ------------------------------
+
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs n
+    | length xs < n = xs
+    | otherwise = (take (n-1) part) ++ (dropEvery rest n)
+        where (part, rest) = splitAt n xs
+
+dropEvery' :: [a] -> Int -> [a]
+dropEvery' [] = []
+dropEvery' (x:xs) n =
+        helper :: [a] -> Int -> [a]

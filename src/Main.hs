@@ -65,6 +65,10 @@ main = do
     putStrLn $ Pr.ppShow result'
 
     quickCheck $ ( test_encodeDirect :: [Char] -> Bool )
--}
 
     quickCheck $ ( test_myDuplicate :: [Char] -> Bool )
+    quickCheck $ ( test_myReplicate :: [Char] -> Bool )
+-}
+
+    let testData16="1234567890"
+    putStrLn $ Pr.ppShow $ dropEvery testData16 3
