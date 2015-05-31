@@ -16,6 +16,8 @@ module P11_20_lists
     test_myReplicate,
 
     dropEvery,
+    dropEvery',
+    test_dropEvery,
     )
 where
 
@@ -104,11 +106,21 @@ test_myReplicate xs = ((myDuplicate . myDuplicate) xs) == (myReplicate xs 4)
 
 dropEvery :: [a] -> Int -> [a]
 dropEvery xs n
+    | n < 1 = []
     | length xs < n = xs
     | otherwise = (take (n-1) part) ++ (dropEvery rest n)
         where (part, rest) = splitAt n xs
 
 dropEvery' :: [a] -> Int -> [a]
-dropEvery' [] = []
-dropEvery' (x:xs) n =
-        helper :: [a] -> Int -> [a]
+dropEvery' [] _ = []
+dropEvery' xs n
+    | n < 1 = []
+    | otherwise = helper xs n n
+        where
+            helper :: [a] -> Int -> Int -> [a]
+            helper [] _ _ = []
+            helper (x:xs) n 1 = helper xs n n
+            helper (x:xs) n c = x:(helper xs n (c-1))
+
+test_dropEvery :: Eq a => [a] -> Int -> Bool
+test_dropEvery xs n = (dropEvery xs n) == (dropEvery' xs n)
