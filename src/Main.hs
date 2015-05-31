@@ -73,5 +73,9 @@ main = do
     putStrLn $ Pr.ppShow $ dropEvery testData16 1
     putStrLn $ Pr.ppShow $ dropEvery' testData16 1
     quickCheck $ (test_dropEvery :: [Char] -> Int -> Bool)
+
+    let testData17="a"
+    putStrLn $ Pr.ppShow $ mySplitAt testData17 0
+    quickCheck $ (test_mySplitAt :: [Char] -> Int -> Bool)
 -}
 

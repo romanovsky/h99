@@ -18,6 +18,9 @@ module P11_20_lists
     dropEvery,
     dropEvery',
     test_dropEvery,
+
+    mySplitAt,
+    test_mySplitAt,
     )
 where
 
@@ -124,3 +127,22 @@ dropEvery' xs n
 
 test_dropEvery :: Eq a => [a] -> Int -> Bool
 test_dropEvery xs n = (dropEvery xs n) == (dropEvery' xs n)
+
+
+------------------------------ 17 ------------------------------
+
+mySplitAt :: [a] -> Int -> ([a],[a])
+mySplitAt [] _ = ([],[])
+mySplitAt xs n
+    | n < 1 = ([],xs)
+    | otherwise = mySplitAt' xs n
+        where
+            mySplitAt' :: [a] -> Int -> ([a],[a])
+            mySplitAt' [] _ = ([],[])
+            mySplitAt' (x:xs) 1 = ([x],xs)
+            mySplitAt' (x:xs) n = (x:first, rest)
+                where
+                    (first,rest) = mySplitAt' xs (n-1)
+
+test_mySplitAt :: Eq a => [a] -> Int -> Bool
+test_mySplitAt xs n = (mySplitAt xs n) == (splitAt n xs)
