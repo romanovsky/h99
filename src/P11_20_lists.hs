@@ -21,6 +21,10 @@ module P11_20_lists
 
     mySplitAt,
     test_mySplitAt,
+
+    mySlice,
+    mySlice',
+    test_mySlice,
     )
 where
 
@@ -146,3 +150,24 @@ mySplitAt xs n
 
 test_mySplitAt :: Eq a => [a] -> Int -> Bool
 test_mySplitAt xs n = (mySplitAt xs n) == (splitAt n xs)
+
+
+------------------------------ 18 ------------------------------
+
+mySlice :: [a] -> Int -> Int -> [a]
+mySlice [] _ _ = []
+mySlice xs from to
+    | from > to = []
+    | from < 1 = mySlice xs 1 to
+    | otherwise =  take (to-from+1) (drop (from-1) xs)
+
+mySlice' :: [a] -> Int -> Int -> [a]
+mySlice' [] _ _ = []
+mySlice' xs from to
+    | from > to = []
+    | from < 1 = mySlice xs 1 to
+    | otherwise = map snd $ filter (\(i,_) -> i>=from && i<=to ) $ zip [1..] xs
+
+test_mySlice :: Eq a => [a] -> Int -> Int -> Bool
+test_mySlice xs from to = (mySlice xs from to) == (mySlice' xs from to)
+

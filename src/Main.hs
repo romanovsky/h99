@@ -79,3 +79,6 @@ main = do
     quickCheck $ (test_mySplitAt :: [Char] -> Int -> Bool)
 -}
 
+    putStrLn $ Pr.ppShow $ mySlice [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
+    putStrLn $ Pr.ppShow $ mySlice' [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
+    quickCheck $ (test_mySlice :: [Char] -> Int -> Int -> Bool)
