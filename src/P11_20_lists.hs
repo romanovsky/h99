@@ -25,6 +25,8 @@ module P11_20_lists
     mySlice,
     mySlice',
     test_mySlice,
+
+    myRotate,
     )
 where
 
@@ -170,4 +172,15 @@ mySlice' xs from to
 
 test_mySlice :: Eq a => [a] -> Int -> Int -> Bool
 test_mySlice xs from to = (mySlice xs from to) == (mySlice' xs from to)
+
+
+------------------------------ 19 ------------------------------
+
+myRotate :: [a] -> Int -> [a]
+myRotate [] _ = []
+myRotate xs at
+    | at < 0 = myRotate xs (at + len)
+    | at > len = myRotate xs (at `mod` len)
+    | otherwise = drop at xs ++ take at xs
+        where len = length xs
 

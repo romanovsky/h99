@@ -77,8 +77,11 @@ main = do
     let testData17="a"
     putStrLn $ Pr.ppShow $ mySplitAt testData17 0
     quickCheck $ (test_mySplitAt :: [Char] -> Int -> Bool)
--}
 
     putStrLn $ Pr.ppShow $ mySlice [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
     putStrLn $ Pr.ppShow $ mySlice' [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
     quickCheck $ (test_mySlice :: [Char] -> Int -> Int -> Bool)
+-}
+
+    let testData19 = "abcdefgh"
+    putStrLn $ Pr.ppShow $ myRotate testData19 30
