@@ -5,6 +5,7 @@ import Data.Eq
 --import TT (ttfun)
 import P01_10_lists
 import P11_20_lists
+import P21_30_lists
 --import Data.Aeson.Encode.Pretty (encodePretty)
 --import IO
 import qualified Text.Show.Pretty as Pr
@@ -81,7 +82,23 @@ main = do
     putStrLn $ Pr.ppShow $ mySlice [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
     putStrLn $ Pr.ppShow $ mySlice' [ 'a','b','c','d','e','f','g','h','i','k'] 3 7
     quickCheck $ (test_mySlice :: [Char] -> Int -> Int -> Bool)
--}
 
     let testData19 = "abcdefgh"
     putStrLn $ Pr.ppShow $ myRotate testData19 30
+-}
+
+
+{-
+------------------------------ 21..30 ------------------------------
+-- 22
+--    putStrLn $ Pr.ppShow $ myRange 1 100
+--    putStrLn $ Pr.ppShow $ myRange'' 1 10
+    let n = 10000
+    let n' = 10000
+    let r1 = seq (myRange 1 n)
+    let r2 = seq (myRange' 1 n)
+    let r3 = seq (myRange'' 1 n)
+--    putStrLn "done"
+--    quickCheck $ test_myRange
+    putStrLn $ Pr.ppShow $ test_myRange 0 n'
+-}
