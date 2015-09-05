@@ -38,6 +38,14 @@ myRange'' i j
                 | otherwise = myRangeHelper i j' (j:xs)
                 where j' = j - 1
 
+myRange''' :: Int -> Int -> [Int]
+myRange''' i j
+    | i == j = [i]
+    | i > j = []
+    | otherwise = scanl (+) i (replicate (j-i) 1)
+
+
 test_myRange :: Int -> Int -> Bool
 --test_myRange i j = (myRange i j) == (myRange' i j) && (myRange i j) == (myRange'' i j)
-test_myRange i j = (myRange' i j) == (myRange'' i j)
+--test_myRange i j = (myRange' i j) == (myRange'' i j) && (myRange i j) == (myRange''' i j)
+test_myRange i j = (myRange'' i j) == (myRange''' i j)

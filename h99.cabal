@@ -9,3 +9,8 @@ executable         h99
   build-depends:   base, QuickCheck, containers, pretty-show
 
 
+executable         h99-prof
+  main-is:         Main.hs
+  hs-source-dirs:  src
+  build-depends:   base, QuickCheck, containers, pretty-show
+  ghc-options:     -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1" -threaded -prof

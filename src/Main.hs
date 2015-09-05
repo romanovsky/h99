@@ -94,11 +94,12 @@ main = do
 --    putStrLn $ Pr.ppShow $ myRange 1 100
 --    putStrLn $ Pr.ppShow $ myRange'' 1 10
     let n = 10000
-    let n' = 10000
     let r1 = seq (myRange 1 n)
     let r2 = seq (myRange' 1 n)
     let r3 = seq (myRange'' 1 n)
 --    putStrLn "done"
+-}
+    let n' = 1000000
 --    quickCheck $ test_myRange
     putStrLn $ Pr.ppShow $ test_myRange 0 n'
--}
+
