@@ -98,8 +98,20 @@ main = do
     let r2 = seq (myRange' 1 n)
     let r3 = seq (myRange'' 1 n)
 --    putStrLn "done"
--}
     let n' = 1000000
 --    quickCheck $ test_myRange
     putStrLn $ Pr.ppShow $ test_myRange 0 n'
 
+
+-- 23
+    let testData23 = "012345"
+    r <- rnd_select testData23 $ length testData23
+    r' <- rnd_select' testData23 $ length testData23
+    putStrLn $ Pr.ppShow r
+    putStrLn $ Pr.ppShow r'
+
+-}
+
+--24
+    r <- diff_select 10000 100001
+    putStrLn $ Pr.ppShow r
