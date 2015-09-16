@@ -49,3 +49,6 @@ test_myRange :: Int -> Int -> Bool
 --test_myRange i j = (myRange i j) == (myRange' i j) && (myRange i j) == (myRange'' i j)
 --test_myRange i j = (myRange' i j) == (myRange'' i j) && (myRange i j) == (myRange''' i j)
 test_myRange i j = (myRange'' i j) == (myRange''' i j)
+
+
+myRndSelect
