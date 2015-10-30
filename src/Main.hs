@@ -110,8 +110,16 @@ main = do
     putStrLn $ Pr.ppShow r
     putStrLn $ Pr.ppShow r'
 
--}
-
 --24
     r <- diff_select 10000 100001
+    putStrLn $ Pr.ppShow r
+-}
+
+
+-- 25
+    let testData25 = [1..1000]
+    r <- rnd_permu testData25
+    putStrLn $ Pr.ppShow r
+
+    r <- rnd_permu_fast testData25
     putStrLn $ Pr.ppShow r

@@ -8,7 +8,10 @@ module P21_30_lists
     rnd_select,
     rnd_select',
 
-    diff_select
+    diff_select,
+
+    rnd_permu,
+    rnd_permu_fast
     )
 where
 
@@ -18,6 +21,7 @@ import Data.List (group, nub)
 import Control.Monad (replicateM)
 import Control.Applicative
 import System.Random (getStdRandom, randomR, randomRs, randomRIO, getStdGen)
+import Data.Map (toAscList, fromList)
 
 -- 22
 myRange :: Int -> Int -> [Int]
@@ -89,3 +93,20 @@ diff_select n limit
     | n<1 = return []
     | n>(limit-1) = return []
     | otherwise = take n . nub . randomRs (1, limit) <$> getStdGen
+
+-- 25
+rnd_permu :: [a] -> IO [a]
+rnd_permu [] = return []
+rnd_permu xs = map (xs!!) <$> take (length xs) . nub . randomRs(0, length xs -1) <$> getStdGen
+
+--rnd_permu_fast xs = return $ map (snd) toAscList (fromList zip (randomRs(1,length xs) <$> getStdGen) xs)
+rnd_permu_fast :: [a] -> IO [a]
+rnd_permu_fast [] = return []
+rnd_permu_fast xs = do
+    i <- getStdRandom (randomR (0,length xs - 1))
+    let x = xs!!i
+    rest <- rnd_permu_fast ( (take i xs) ++ (drop (i+1) xs) )
+    let result = x:rest
+    return result
+
+
