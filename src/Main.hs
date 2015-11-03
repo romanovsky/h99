@@ -117,9 +117,15 @@ main = do
 
 
 -- 25
-    let testData25 = [1..1000]
+    let testData25 = [1..10000]
+    putStrLn $ "rnd_permu"
     r <- rnd_permu testData25
     putStrLn $ Pr.ppShow r
 
-    r <- rnd_permu_fast testData25
+--    putStrLn $ "rnd_permu_fast1"
+--    r <- rnd_permu_fast1 testData25
+--    putStrLn $ Pr.ppShow r
+    
+    putStrLn $ "rnd_permu_fast2"
+    r <- rnd_permu_fast2 testData25
     putStrLn $ Pr.ppShow r

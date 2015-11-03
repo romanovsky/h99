@@ -11,7 +11,8 @@ module P21_30_lists
     diff_select,
 
     rnd_permu,
-    rnd_permu_fast
+    rnd_permu_fast1,
+    rnd_permu_fast2
     )
 where
 
@@ -100,13 +101,26 @@ rnd_permu [] = return []
 rnd_permu xs = map (xs!!) <$> take (length xs) . nub . randomRs(0, length xs -1) <$> getStdGen
 
 --rnd_permu_fast xs = return $ map (snd) toAscList (fromList zip (randomRs(1,length xs) <$> getStdGen) xs)
-rnd_permu_fast :: [a] -> IO [a]
-rnd_permu_fast [] = return []
-rnd_permu_fast xs = do
+rnd_permu_fast1 :: [a] -> IO [a]
+rnd_permu_fast1 [] = return []
+rnd_permu_fast1 xs = do
     i <- getStdRandom (randomR (0,length xs - 1))
     let x = xs!!i
-    rest <- rnd_permu_fast ( (take i xs) ++ (drop (i+1) xs) )
+    rest <- rnd_permu_fast1 ( (take i xs) ++ (drop (i+1) xs) )
     let result = x:rest
+    return result
+
+
+--rnd_permu_fast xs = return $ map (snd) toAscList (fromList zip (randomRs(1,length xs) <$> getStdGen) xs)
+--WRONG: declining randomness of the result
+rnd_permu_fast2 :: [a] -> IO [a]
+rnd_permu_fast2 [] = return []
+rnd_permu_fast2 xs = do
+    i <- getStdRandom (randomR (0,length xs - 1))
+    let x = xs!!i
+    rest1 <- rnd_permu_fast2(take i xs)
+    rest2 <- rnd_permu_fast2(drop (i+1) xs)
+    let result = x:(rest1++rest2)
     return result
 
 
