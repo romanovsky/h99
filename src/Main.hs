@@ -113,7 +113,6 @@ main = do
 --24
     r <- diff_select 10000 100001
     putStrLn $ Pr.ppShow r
--}
 
 
 -- 25
@@ -122,10 +121,35 @@ main = do
     r <- rnd_permu testData25
     putStrLn $ Pr.ppShow r
 
---    putStrLn $ "rnd_permu_fast1"
---    r <- rnd_permu_fast1 testData25
---    putStrLn $ Pr.ppShow r
+    putStrLn $ "rnd_permu_fast1"
+    r <- rnd_permu_fast1 testData25
+    putStrLn $ Pr.ppShow r
     
     putStrLn $ "rnd_permu_fast2"
     r <- rnd_permu_fast2 testData25
     putStrLn $ Pr.ppShow r
+
+    let testData26 = "abcdefgh"
+    let r = combinations 2 testData26
+    putStrLn $ Pr.ppShow r
+    
+    let testData26 = "abc"
+    let r = combinations 4 testData26
+    putStrLn $ Pr.ppShow r
+
+--28
+--    let testData28 = ["b", "a", "asdf", "qw", "ab"]
+
+    let testData28 = [[1..1000],[40..99],[1,2], [11..1000000]]
+    let r = lsort testData28
+    putStrLn $ Pr.ppShow $ length r
+    let r = lsort' testData28
+    putStrLn $ Pr.ppShow $ length r
+
+-}
+    let testData28 = ["ab", "bc", "de", "a", "asdfasdfasdf", "b", "ze"]
+    let r = lsortb testData28
+    putStrLn $ Pr.ppShow $ r
+    let r = lsort testData28
+    putStrLn $ Pr.ppShow $ r
+    

@@ -12,17 +12,25 @@ module P21_30_lists
 
     rnd_permu,
     rnd_permu_fast1,
-    rnd_permu_fast2
+    rnd_permu_fast2,
+
+    combinations,
+
+    lsort,
+    lsort',
+    lsortb,
     )
 where
 
 import Data.Eq
-import Data.List (group, nub)
+import Data.List (group, nub, sortBy, groupBy)
 
 import Control.Monad (replicateM)
 import Control.Applicative
 import System.Random (getStdRandom, randomR, randomRs, randomRIO, getStdGen)
 import Data.Map (toAscList, fromList)
+import Data.List.Ordered (sortOn)
+import Data.Function (on)
 
 -- 22
 myRange :: Int -> Int -> [Int]
@@ -124,3 +132,16 @@ rnd_permu_fast2 xs = do
     return result
 
 
+combinations :: Int -> [a] -> [[a]]
+combinations 0 _ = [[]]
+combinations _ [] = []
+combinations l (x:xs) = (map (x:) (combinations (l-1) xs)) ++ (combinations l xs)
+
+lsort :: [[a]] -> [[a]]
+lsort = sortBy (\a b -> compare (length a) (length b)) 
+
+lsort' :: [[a]] -> [[a]]
+lsort' = sortOn length
+
+lsortb :: Eq a => [[a]] -> [[a]]
+lsortb = map fst . concat . sortOn length . groupBy ((==) `on` snd) . sortOn snd . map ( \x -> (x, length x) )
