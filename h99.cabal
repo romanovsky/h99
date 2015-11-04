@@ -6,11 +6,11 @@ cabal-version:     >= 1.2
 executable         h99
   main-is:         Main.hs
   hs-source-dirs:  src
-  build-depends:   base, QuickCheck, containers, pretty-show
+  build-depends:   base, QuickCheck, containers, pretty-show, random
 
 
-executable         h99-prof
-  main-is:         Main.hs
-  hs-source-dirs:  src
-  build-depends:   base, QuickCheck, containers, pretty-show
-  ghc-options:     -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1" -threaded -prof
+--executable         h99-prof
+--  main-is:         Main.hs
+--  hs-source-dirs:  src
+--  build-depends:   base, QuickCheck, containers, pretty-show, random
+--  ghc-options:     -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1" -threaded -prof

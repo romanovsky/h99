@@ -103,6 +103,22 @@ diff_select n limit
     | n>(limit-1) = return []
     | otherwise = take n . nub . randomRs (1, limit) <$> getStdGen
 
+diff_select_fast :: Int -> Int -> IO [Int]
+diff_select_fast n limit
+    | n<1 = return []
+    | n>(limit-1) = return []
+    | otherwise = dsf [1..n] limit
+
+dsf :: [Int] -> Int -> IO [Int]
+dsf [] _ = return []
+dsf xs 0 = return xs
+--dsf xs l = do i<-getStdRandom (randomR(0,length xs -1)) return [xs!!i]
+dsf xs l = do
+	i<-getStdRandom (randomR(0,length xs -1)) 
+	let x = xs!!i
+	rest <- (dsf (take i xs ++ drop i xs) (l-1))
+	return x:rest
+
 -- 25
 rnd_permu :: [a] -> IO [a]
 rnd_permu [] = return []
