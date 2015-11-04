@@ -6,6 +6,7 @@ import Data.Eq
 import P01_10_lists
 import P11_20_lists
 import P21_30_lists
+import P31_40_arithmetic
 --import Data.Aeson.Encode.Pretty (encodePretty)
 --import IO
 import qualified Text.Show.Pretty as Pr
@@ -146,10 +147,16 @@ main = do
     let r = lsort' testData28
     putStrLn $ Pr.ppShow $ length r
 
--}
     let testData28 = ["ab", "bc", "de", "a", "asdfasdfasdf", "b", "ze"]
     let r = lsortb testData28
     putStrLn $ Pr.ppShow $ r
     let r = lsort testData28
     putStrLn $ Pr.ppShow $ r
+-}
     
+------------------------------ 21..30 ------------------------------
+-- 31
+    let testData31 = [0..1000]
+    let r = map (\i -> (i, isPrime i)) testData31
+    print $ Pr.ppShow $ r
+

@@ -114,10 +114,11 @@ dsf [] _ = return []
 dsf xs 0 = return xs
 --dsf xs l = do i<-getStdRandom (randomR(0,length xs -1)) return [xs!!i]
 dsf xs l = do
-	i<-getStdRandom (randomR(0,length xs -1)) 
-	let x = xs!!i
-	rest <- (dsf (take i xs ++ drop i xs) (l-1))
-	return x:rest
+    i<-getStdRandom (randomR(0,length xs -1)) 
+    let x = xs!!i
+    rest <- (dsf (take i xs ++ drop i xs) (l-1))
+    let result = x:rest
+    return result
 
 -- 25
 rnd_permu :: [a] -> IO [a]
