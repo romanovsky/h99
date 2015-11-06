@@ -152,11 +152,16 @@ main = do
     putStrLn $ Pr.ppShow $ r
     let r = lsort testData28
     putStrLn $ Pr.ppShow $ r
--}
     
 ------------------------------ 21..30 ------------------------------
 -- 31
     let testData31 = [0..1000]
     let r = map (\i -> (i, isPrime i)) testData31
-    print $ Pr.ppShow $ r
+    putStrLn $ Pr.ppShow $ r
 
+-- 32
+    putStrLn $ Pr.ppShow $ [ myGCD 36 63, myGCD (-3) (-6), myGCD (-3) 6]
+-}
+
+-- 33
+    putStrLn $ Pr.ppShow $ [ coprime 35 64, coprime 22 44, coprime (-1) 1, coprime (-4) 2, coprime (-25) 5 ] 
