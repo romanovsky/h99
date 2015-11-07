@@ -161,7 +161,12 @@ main = do
 
 -- 32
     putStrLn $ Pr.ppShow $ [ myGCD 36 63, myGCD (-3) (-6), myGCD (-3) 6]
--}
 
 -- 33
     putStrLn $ Pr.ppShow $ [ coprime 35 64, coprime 22 44, coprime (-1) 1, coprime (-4) 2, coprime (-25) 5 ] 
+-}
+
+-- 34
+--    putStrLn $ Pr.ppShow $ [ totient 1, totient 234, totient (-10), totient 10000 ]
+--    putStrLn $ Pr.ppShow $ [ totient' 1, totient' 234, totient' (-10), totient 10000 ]
+    putStrLn $ Pr.ppShow $ totient' 100000
