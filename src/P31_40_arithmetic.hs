@@ -5,6 +5,7 @@ module P31_40_arithmetic
     coprime,
     totient,
     totient',
+    primeFactors,
     )
 
 where
@@ -36,3 +37,15 @@ totient a = sum $ map (fromEnum . coprime a) [1..(a-1)]
 totient' :: Integral a => a -> Int
 totient' 1 = 1
 totient' a = length $ filter (coprime a) [1..(a-1)]
+
+-- 35
+primeFactors :: Integral a => a -> [a]
+primeFactors n
+    | n < 4 = [n]
+    | otherwise = pf n 2
+
+pf :: Integral a => a -> a -> [a]
+pf n f
+    | f*f > n = [n]
+    | n `mod` f == 0 = f : pf (n `div` f) f
+    | otherwise = pf n (f+1)

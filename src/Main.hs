@@ -153,7 +153,7 @@ main = do
     let r = lsort testData28
     putStrLn $ Pr.ppShow $ r
     
------------------------------- 21..30 ------------------------------
+------------------------------ 31..40 ------------------------------
 -- 31
     let testData31 = [0..1000]
     let r = map (\i -> (i, isPrime i)) testData31
@@ -164,9 +164,12 @@ main = do
 
 -- 33
     putStrLn $ Pr.ppShow $ [ coprime 35 64, coprime 22 44, coprime (-1) 1, coprime (-4) 2, coprime (-25) 5 ] 
--}
 
 -- 34
 --    putStrLn $ Pr.ppShow $ [ totient 1, totient 234, totient (-10), totient 10000 ]
 --    putStrLn $ Pr.ppShow $ [ totient' 1, totient' 234, totient' (-10), totient 10000 ]
     putStrLn $ Pr.ppShow $ totient' 100000
+-}
+
+-- 35
+    putStrLn $ Pr.ppShow $ primeFactors 315
