@@ -7,6 +7,9 @@ module P31_40_arithmetic
     totient',
     primeFactors,
     primeFactorsMult,
+    totientFast,
+    totientFast',
+    totientFast'',
     )
 
 where
@@ -56,3 +59,13 @@ pf n f
 primeFactorsMult :: Integral a => a -> [(a, Int)]
 primeFactorsMult n = map (\xx -> (head xx, length xx)) $ group $ primeFactors n
 
+-- 37
+totientFast :: Int -> Int
+totientFast n = (product $ map (\pt -> (n - (n `div` (fst pt)))) (primes)) `div` (n^(length primes - 1))
+    where primes =primeFactorsMult n
+
+totientFast' :: Int -> Int
+totientFast' n = product $ map (\(p,m) -> (p - 1) * p^(m-1)) (primeFactorsMult n)
+
+totientFast'' :: Int -> Int
+totientFast'' n = product [(p - 1) * p^(m-1) | (p, m) <- primeFactorsMult n]

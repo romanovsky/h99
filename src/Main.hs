@@ -169,10 +169,16 @@ main = do
 --    putStrLn $ Pr.ppShow $ [ totient 1, totient 234, totient (-10), totient 10000 ]
 --    putStrLn $ Pr.ppShow $ [ totient' 1, totient' 234, totient' (-10), totient 10000 ]
     putStrLn $ Pr.ppShow $ totient' 100000
--}
 
 -- 35
     putStrLn $ Pr.ppShow $ primeFactors 315
 
 -- 36
     putStrLn $ Pr.ppShow $ primeFactorsMult 315
+-}
+
+-- 37
+    let testData37 = 100000000
+    putStrLn $ Pr.ppShow $ totientFast testData37
+    putStrLn $ Pr.ppShow $ totientFast' testData37
+    putStrLn $ Pr.ppShow $ totientFast'' testData37
