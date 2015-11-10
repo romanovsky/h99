@@ -6,11 +6,13 @@ module P31_40_arithmetic
     totient,
     totient',
     primeFactors,
+    primeFactorsMult,
     )
 
 where
 
 import Data.List.Ordered
+import Data.List (group)
 
 -- 31
 isPrime :: Integral a => a -> Bool
@@ -49,3 +51,8 @@ pf n f
     | f*f > n = [n]
     | n `mod` f == 0 = f : pf (n `div` f) f
     | otherwise = pf n (f+1)
+
+-- 36
+primeFactorsMult :: Integral a => a -> [(a, Int)]
+primeFactorsMult n = map (\xx -> (head xx, length xx)) $ group $ primeFactors n
+

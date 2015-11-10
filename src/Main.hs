@@ -173,3 +173,6 @@ main = do
 
 -- 35
     putStrLn $ Pr.ppShow $ primeFactors 315
+
+-- 36
+    putStrLn $ Pr.ppShow $ primeFactorsMult 315
