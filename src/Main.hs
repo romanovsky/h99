@@ -175,10 +175,12 @@ main = do
 
 -- 36
     putStrLn $ Pr.ppShow $ primeFactorsMult 315
--}
 
 -- 37
     let testData37 = 100000000
     putStrLn $ Pr.ppShow $ totientFast testData37
     putStrLn $ Pr.ppShow $ totientFast' testData37
     putStrLn $ Pr.ppShow $ totientFast'' testData37
+-}
+    let testData38 = 10090
+    putStrLn $ Pr.ppShow $ profileTotient testData38

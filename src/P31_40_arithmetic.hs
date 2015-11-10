@@ -10,6 +10,7 @@ module P31_40_arithmetic
     totientFast,
     totientFast',
     totientFast'',
+    profileTotient,
     )
 
 where
@@ -69,3 +70,8 @@ totientFast' n = product $ map (\(p,m) -> (p - 1) * p^(m-1)) (primeFactorsMult n
 
 totientFast'' :: Int -> Int
 totientFast'' n = product [(p - 1) * p^(m-1) | (p, m) <- primeFactorsMult n]
+
+-- 38
+
+profileTotient :: Int -> Bool
+profileTotient n = totientFast n == totient n
