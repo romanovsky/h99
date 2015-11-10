@@ -181,6 +181,9 @@ main = do
     putStrLn $ Pr.ppShow $ totientFast testData37
     putStrLn $ Pr.ppShow $ totientFast' testData37
     putStrLn $ Pr.ppShow $ totientFast'' testData37
--}
+
+-- 38
     let testData38 = 10090
     putStrLn $ Pr.ppShow $ profileTotient testData38
+-}
+    putStrLn $ Pr.ppShow $ primesR 10 100000

@@ -11,6 +11,7 @@ module P31_40_arithmetic
     totientFast',
     totientFast'',
     profileTotient,
+    primesR,
     )
 
 where
@@ -23,7 +24,7 @@ isPrime :: Integral a => a -> Bool
 isPrime 0 = False
 isPrime 1 = False
 isPrime 2 = True
-isPrime a = not . or $ map (\x -> mod a x == 0) [2..a-1]
+isPrime a = not . or $ map (\x -> mod a x == 0) [2..ceiling $ sqrt $ fromIntegral a]
 
 -- 32
 myGCD :: Integral a => a -> a -> a
@@ -72,6 +73,9 @@ totientFast'' :: Int -> Int
 totientFast'' n = product [(p - 1) * p^(m-1) | (p, m) <- primeFactorsMult n]
 
 -- 38
-
 profileTotient :: Int -> Bool
 profileTotient n = totientFast n == totient n
+
+-- 39
+primesR :: Integral a => a -> a -> [a]
+primesR f t = filter isPrime [f..t]
