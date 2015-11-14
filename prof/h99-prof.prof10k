@@ -1,0 +1,36 @@
+	Mon Nov  2 16:31 2015 Time and Allocation Profiling Report  (Final)
+
+	   h99-prof +RTS -N -p -s -h -i0.1 -RTS
+
+	total time  =        9.75 secs   (9753 ticks @ 1000 us, 1 processor)
+	total alloc = 1,786,612,240 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE       %time %alloc
+
+rnd_permu        P21_30_lists  82.8    3.2
+rnd_permu_fast.x P21_30_lists   8.8    0.0
+rnd_permu_fast   P21_30_lists   7.1   89.6
+main             Main           1.4    7.2
+
+
+                                                                   individual     inherited
+COST CENTRE              MODULE                  no.     entries  %time %alloc   %time %alloc
+
+MAIN                     MAIN                     70           0    0.0    0.0   100.0  100.0
+ main                    Main                    141           0    1.4    7.2   100.0  100.0
+  rnd_permu_fast         P21_30_lists            146       10000    7.1   89.6    15.8   89.6
+   rnd_permu_fast.x      P21_30_lists            148       10000    8.8    0.0     8.8    0.0
+   rnd_permu_fast.result P21_30_lists            147       10000    0.0    0.0     0.0    0.0
+  rnd_permu              P21_30_lists            144           0   82.8    3.2    82.8    3.2
+ CAF                     Main                    139           0    0.0    0.0     0.0    0.0
+  main                   Main                    140           1    0.0    0.0     0.0    0.0
+   rnd_permu_fast        P21_30_lists            145           1    0.0    0.0     0.0    0.0
+   main.testData25       Main                    143           1    0.0    0.0     0.0    0.0
+   rnd_permu             P21_30_lists            142           1    0.0    0.0     0.0    0.0
+ CAF                     Text.Show.Parser        134           0    0.0    0.0     0.0    0.0
+ CAF                     System.Random           124           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding         117           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Handle.FD        115           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.Event.Thread        110           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.Conc.Signal         107           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding.Iconv    98           0    0.0    0.0     0.0    0.0

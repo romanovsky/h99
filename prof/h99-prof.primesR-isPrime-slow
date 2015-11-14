@@ -1,0 +1,29 @@
+	Mon Nov  9 18:00 2015 Time and Allocation Profiling Report  (Final)
+
+	   h99-prof +RTS -N -p -s -h -i0.1 -RTS
+
+	total time  =       39.94 secs   (39944 ticks @ 1000 us, 1 processor)
+	total alloc = 83,838,582,208 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE            %time %alloc
+
+isPrime     P31_40_arithmetic  59.5   91.2
+isPrime.\   P31_40_arithmetic  40.3    8.7
+
+
+                                                         individual     inherited
+COST CENTRE    MODULE                  no.     entries  %time %alloc   %time %alloc
+
+MAIN           MAIN                     72           0    0.0    0.0   100.0  100.0
+ main          Main                    145           0    0.0    0.0     0.0    0.0
+ CAF           Main                    143           0    0.0    0.0   100.0  100.0
+  main         Main                    144           1    0.2    0.1   100.0  100.0
+   primesR     P31_40_arithmetic       146           1    0.0    0.0    99.8   99.9
+    isPrime    P31_40_arithmetic       147       99991   59.5   91.2    99.7   99.9
+     isPrime.\ P31_40_arithmetic       148   455189136   40.3    8.7    40.3    8.7
+ CAF           Text.Show.Parser        137           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding         119           0    0.0    0.0     0.0    0.0
+ CAF           GHC.Event.Thread        113           0    0.0    0.0     0.0    0.0
+ CAF           GHC.Conc.Signal         110           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Handle.FD        108           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding.Iconv    95           0    0.0    0.0     0.0    0.0
