@@ -1,4 +1,4 @@
-module P31_40_arithmetic
+module P31_41_arithmetic
     (
     isPrime,
     myGCD,
@@ -12,6 +12,11 @@ module P31_40_arithmetic
     totientFast'',
     profileTotient,
     primesR,
+    goldbach,
+    goldbach',
+    goldbach'',
+    goldbachList,
+    goldbachList',
     )
 
 where
@@ -79,3 +84,27 @@ profileTotient n = totientFast n == totient n
 -- 39
 primesR :: Integral a => a -> a -> [a]
 primesR f t = filter isPrime [f..t]
+
+-- 40
+-- goldbach is the fastest
+goldbach :: Integral a => a -> (a,a)
+goldbach n 
+    | n > 2 && even n = head [ (x,y) | x <- primesR 2 (n-2), let y = (n-x), isPrime y ]
+    | otherwise = (0,0)
+
+goldbach' :: Integral a => a -> (a,a)
+goldbach' n = head [ (x,y) | x <- primesR 2 (n-2), y <- primesR 2 (n-2), x+y==n ]
+
+goldbach'' :: Integral a => a -> (a,a)
+goldbach'' n = head [ (x,y) | (x,y) <- odd_pairs, (isPrime x && isPrime y)]
+    where odd_pairs = map (\x -> (x, (n-x))) [1,3..(n `div` 2)] 
+
+
+-- 41
+
+goldbachList :: Integral a => a -> a -> [(a,a)]
+goldbachList a b = map goldbach $ filter even [a .. b]
+
+goldbachList' :: Integral a => a -> a -> a -> [(a,a)]
+goldbachList' a b c = filter (\(a,b) -> a>c && b>c) $ map goldbach $ filter even [a .. b]
+

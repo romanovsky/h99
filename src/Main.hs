@@ -6,14 +6,14 @@ import Data.Eq
 import P01_10_lists
 import P11_20_lists
 import P21_30_lists
-import P31_40_arithmetic
+import P31_41_arithmetic
+import P46_50_logic
 --import Data.Aeson.Encode.Pretty (encodePretty)
 --import IO
 import qualified Text.Show.Pretty as Pr
 
 main :: IO()
 main = do
-    let testData = "qwersdafqdsfeee"
 {-
 ------------------------------ 01..10 ------------------------------
     quickCheck $ ( test_p01_myLast :: ([Char]->Char) -> [Char] -> Bool) p01_myLast
@@ -153,7 +153,7 @@ main = do
     let r = lsort testData28
     putStrLn $ Pr.ppShow $ r
     
------------------------------- 31..40 ------------------------------
+------------------------------ 31..41 ------------------------------
 -- 31
     let testData31 = [0..1000]
     let r = map (\i -> (i, isPrime i)) testData31
@@ -185,5 +185,19 @@ main = do
 -- 38
     let testData38 = 10090
     putStrLn $ Pr.ppShow $ profileTotient testData38
--}
     putStrLn $ Pr.ppShow $ primesR 10 100000
+
+-- 40
+    putStrLn $ Pr.ppShow $ goldbach 28002
+    putStrLn $ Pr.ppShow $ goldbach' 28002
+    putStrLn $ Pr.ppShow $ goldbach'' 28002
+    putStrLn $ Pr.ppShow $ goldbach 280000000000002
+    putStrLn $ Pr.ppShow $ goldbach'' 28000000000002
+
+-- 41
+    putStrLn $ Pr.ppShow $ goldbachList 9 20
+    putStrLn $ Pr.ppShow $ goldbachList' 4 2000 50
+-}
+
+------------------------------ 46..50 ------------------------------
+    table (\a b -> (and' a (or' a b)))
